@@ -44,9 +44,9 @@ export default function Navigation() {
         align='center'
       >
         <Flex
-          flex={{ base: 1, md: 'auto' }}
-          ml={{ base: -2 }}
-          display={{ base: 'flex', md: 'none' }}
+          // flex={{ base: 1, md: 'auto' }}
+          ml={{ base: 0 }}
+          display={{ base: 'flex', lg: 'none' }}
         >
           <IconButton
             onClick={onToggle}
@@ -55,9 +55,9 @@ export default function Navigation() {
             aria-label='Toggle Navigation'
           />
         </Flex>
-        <Flex flex={{ base: 1}} justify='center'>
+        <Flex flex={{ base: 1 }} justify='center' align='center'>
           <Image src={Logo} title="Little Lemon" alt='Little Lemon' h='12' mr={{base: '0', md: '90px'}} />
-          <Flex display={{base: 'none', md: 'flex'}} ml={10}>
+          <Flex display={{base: 'none', lg: 'flex'}} ml={10}>
             <DesktopNav />
           </Flex>
         </Flex>

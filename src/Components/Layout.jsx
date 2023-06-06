@@ -19,6 +19,7 @@ export default function Layout({children, ...rest}) {
       > */}
         <Navigation />
         <Box 
+          as='main'
           p={4} 
           h='full' 
           {...rest}

@@ -13,7 +13,7 @@ export default function Footer() {
           <Image src={LogoVertical} maxH='130px' title='Little Lemon' alt='Little Lemon' />
         </Box>
         <Box>
-          <SectionTitle mb='25px'>Navigation</SectionTitle>
+          <SectionTitle display='block' mb='25px'>Navigation</SectionTitle>
           <List>
             <ListItem mb='13px' fontSize='sectionCategory' fontWeight='sectionCategory'>
               <Link as={RouterLink} to='/'>Home</Link>
@@ -36,19 +36,19 @@ export default function Footer() {
           </List>
         </Box>
         <Box>
-          <SectionTitle mb='25px'>Contact</SectionTitle>
+          <SectionTitle display='block' mb='25px'>Contact</SectionTitle>
           <List>
-            <SectionCategory mb='13px'>Address</SectionCategory>
-            <SectionCategory mb='13px'>Phone Number</SectionCategory>
-            <SectionCategory mb='13px'>Email</SectionCategory>
+            <SectionCategory display='block' mb='13px'>Address</SectionCategory>
+            <SectionCategory display='block' mb='13px'>Phone Number</SectionCategory>
+            <SectionCategory display='block' mb='13px'>Email</SectionCategory>
           </List>
         </Box>
         <Box>
-          <SectionTitle mb='25px'>Social Media</SectionTitle>
+          <SectionTitle display='block' mb='25px'>Social Media</SectionTitle>
           <List>
-            <SectionCategory mb='13px'>Facebook</SectionCategory>
-            <SectionCategory mb='13px'>Instagram</SectionCategory>
-            <SectionCategory mb='13px'>Yelp</SectionCategory>
+            <SectionCategory display='block' mb='13px'>Facebook</SectionCategory>
+            <SectionCategory display='block' mb='13px'>Instagram</SectionCategory>
+            <SectionCategory display='block' mb='13px'>Yelp</SectionCategory>
           </List>
         </Box>
       </SimpleGrid>

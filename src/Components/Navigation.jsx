@@ -43,6 +43,7 @@ export default function Navigation() {
         py={{ base: 2 }}
         px={{ base: 4 }}
         align='center'
+        as='nav'
       >
         <Flex
           // flex={{ base: 1, md: 'auto' }}
@@ -63,7 +64,7 @@ export default function Navigation() {
           </Flex>
         </Flex>
       </Flex>
-      <Collapse in={isOpen} animateOpacity>
+      <Collapse in={isOpen} as='nav' animateOpacity>
         <MobileNav />
       </Collapse>
     </Box>

@@ -49,8 +49,8 @@ const theme = extendTheme({
     title: 'medium',
     subtitle: 'regular',
     lead: 'medium',
-    sectionTitle: 'extrabold',
-    sectionCategory: 'extrabold',
+    sectionTitle: 'bolder',
+    sectionCategory: 'bolder',
     cardTitle: 'bold',
     paragraph: 'regular',
     highlight: 'medium'

@@ -1,4 +1,4 @@
-import { Box, Stack, Heading, Text, Icon, HStack } from "@chakra-ui/react";
+import { Box, Stack, Heading, Text, Icon, HStack, Flex } from "@chakra-ui/react";
 import { BsFillCheckCircleFill } from 'react-icons/bs';
 import { 
   BsFill1CircleFill, 
@@ -11,6 +11,7 @@ import {
   BsFill8CircleFill,
   BsFill9CircleFill,
 } from 'react-icons/bs';
+import { SectionCategory, SectionTitle } from "./Typography";
 
 const icons = {
   1: BsFill1CircleFill,
@@ -24,18 +25,35 @@ const icons = {
   9: BsFill9CircleFill,
 }
 
-const WizardStep = ({ step, stepIndex, currentStep, stepCount }) => {
+const WizardStep = ({ step, stepIndex, activeStep, stepCount }) => {
   
   return (
     <HStack flex={stepIndex < stepCount-1 ? 1 : 'initial'}>
-      <Icon 
-        boxSize='32px' 
-        borderColor='primary.green' 
-        as={stepIndex < currentStep ? BsFillCheckCircleFill : icons[stepIndex+1] }
-      />
+      {stepIndex < activeStep
+        ? ( 
+          <Icon 
+            boxSize='32px' 
+            borderColor='black' 
+            as={BsFillCheckCircleFill}
+            color='primary.green' 
+          /> 
+        ) : (
+          <Flex 
+            flexShrink='0' 
+            w='32px' 
+            h='32px' 
+            borderRadius='50%' 
+            color={stepIndex === activeStep ? 'black' : 'white'} 
+            bg={stepIndex === activeStep ? 'primary.yellow' : 'primary.green'} 
+            justifyContent='center' 
+            alignItems='center'
+          >
+            <SectionTitle>{stepIndex + 1}</SectionTitle>
+          </Flex>
+        )}
       <Box flexShrink='0'>
-        <Heading fontSize='sectionTitle' fontWeight='sectionTitle' textTransform='uppercase' mb='0'>{step.title}</Heading>
-        <Text fontSize='sectionCategory' fontWeight='sectionCategory'>{step.description}</Text>
+        <SectionTitle mb='0' display='block'>{step.title}</SectionTitle>
+        <SectionCategory display='block'>{step.description}</SectionCategory>
       </Box>
       {stepIndex < stepCount-1 && <WizardSeparator />}
     </HStack>
@@ -53,8 +71,8 @@ export default function Wizard({ steps, activeStep, ...rest }) {
     <Stack 
       position='relative' 
       bg='white' 
-      translateY='-50%'
-      p='5px'
+      transform={{ base: '', md: 'translateY(-50%)'}}
+      px='5px'
       justifyContent='space-between'
       gap='35px'
       direction={{ base: 'column', md: 'row' }}

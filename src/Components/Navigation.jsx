@@ -1,8 +1,9 @@
-import { Box, Collapse, Flex, IconButton, Image, Link, Menu, MenuButton, MenuList, Text, Popover, PopoverContent, PopoverTrigger, Stack, useDisclosure } from "@chakra-ui/react";
+import { Box, Collapse, Flex, IconButton, Image, Link, Text, Popover, PopoverContent, PopoverTrigger, Stack, useDisclosure } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import { Link as RouterLink } from "react-router-dom";
 
 import Logo from '../Images/Logo.svg';
+import { CardTitle } from "./Typography";
 
 
 const NAV_ITEMS = [
@@ -77,8 +78,8 @@ const DesktopNav = () => {
           <Popover trigger='hover' placement='bottom-start'>
             <PopoverTrigger>
               <Link as={RouterLink} to={navItem.href ?? '#'}>
-                <Flex alignItems='center' p={2} fontSize='cardTitle' fontWeight='cardTitle'>
-                  {navItem.label}
+                <Flex alignItems='center' p={2}>
+                  <CardTitle>{navItem.label}</CardTitle>
                 </Flex>
               </Link>
             </PopoverTrigger>
@@ -128,7 +129,7 @@ const MobileNav = () => {
   return (
     <Stack
       p={4}
-      display={{ md: 'none' }}>
+      display={{ lg: 'none' }}>
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
@@ -150,11 +151,9 @@ const MobileNavItem = ({ label, children, href }) => {
         _hover={{
           textDecoration: 'none',
         }}>
-        <Text
-          fontWeight={600}
-        >
+        <CardTitle>
           {label}
-        </Text>
+        </CardTitle>
         {children && (
           <Icon
             as={ChevronDownIcon}

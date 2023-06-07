@@ -23,40 +23,8 @@ const router = createBrowserRouter([
 
 const theme = extendTheme({
   fonts: {
-    body: 'Karla',
-    heading: 'Markazi Text, serif',
-    section: 'Karla',
-    title: 'Markazi Text',
-    subtitle: 'Markazi Text',
-    lead: 'Karla',
-    sectionTitle: 'Karla',
-    sectionCategory: 'Karla',
-    cardTitle: 'Karla',
-    paragraph: 'Karla',
-    highlight: 'Karla'
-  },
-  fontSizes: {
-    title: '64px',
-    subtitle: '40px',
-    lead: '18px',
-    sectionTitle: '20px',
-    sectionCategory: '16px',
-    cardTitle: '18px',
-    paragraph: '16px',
-    highlight: '16px'
-  },
-  fontWeights: {
-    title: 'medium',
-    subtitle: 'regular',
-    lead: 'medium',
-    sectionTitle: 'bolder',
-    sectionCategory: 'bolder',
-    cardTitle: 'bold',
-    paragraph: 'regular',
-    highlight: 'medium'
-  },
-  textTransforms: {
-    sectionTitle: 'uppercase'
+    body: `'Karla'`,
+    heading: `'Markazi Text', serif`,
   },
   colors: {
     primary: {

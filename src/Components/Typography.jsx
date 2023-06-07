@@ -7,6 +7,8 @@ function DisplayTitle({children, ...rest}) {
       fontFamily='Markazi Text'
       fontWeight='medium'
       fontSize='64px'
+      height='48px'
+      lineHeight='1'
       {...rest}
     >{children}</Heading>
   );

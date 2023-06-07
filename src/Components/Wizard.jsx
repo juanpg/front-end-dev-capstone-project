@@ -1,4 +1,4 @@
-import { Box, Stack, Heading, Text, Icon, HStack, Flex } from "@chakra-ui/react";
+import { Box, Stack, Icon, HStack, Flex, useMediaQuery } from "@chakra-ui/react";
 import { BsFillCheckCircleFill } from 'react-icons/bs';
 import { 
   BsFill1CircleFill, 
@@ -26,9 +26,10 @@ const icons = {
 }
 
 const WizardStep = ({ step, stepIndex, activeStep, stepCount }) => {
+  const [isLarge] = useMediaQuery('(min-width: 48em)');
   
   return (
-    <HStack flex={stepIndex < stepCount-1 ? 1 : 'initial'}>
+    <HStack flex={stepIndex < stepCount-1 ? 1 : 'initial'} display={isLarge || stepIndex === activeStep ? 'flex' : 'none'}>
       {stepIndex < activeStep
         ? ( 
           <Icon 
@@ -71,11 +72,11 @@ export default function Wizard({ steps, activeStep, ...rest }) {
     <Stack 
       position='relative' 
       bg='white' 
-      transform={{ base: '', md: 'translateY(-50%)'}}
+      transform={{ base: 'translateY(-50%)', md: 'translateY(-50%)'}}
       px='5px'
       justifyContent='space-between'
       gap='35px'
-      direction={{ base: 'column', md: 'row' }}
+      direction={{ base: 'row', md: 'row' }}
       {...rest}
     >
       {steps.map((step, idx) => (

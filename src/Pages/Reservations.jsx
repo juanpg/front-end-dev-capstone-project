@@ -1,5 +1,5 @@
-import { Alert, AlertDescription, AlertIcon, AlertTitle, Box, Button, Select, Stack, FormControl, FormLabel, FormErrorMessage, Textarea, Radio, RadioGroup, Container, ButtonGroup, Input, Checkbox, Link, useMediaQuery, useDisclosure, Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody } from "@chakra-ui/react";
-import { Card, DatePicker } from "antd";
+import { Alert, AlertDescription, AlertIcon, AlertTitle, Box, Button, Select, Stack, FormControl, FormLabel, FormErrorMessage, Textarea, Radio, RadioGroup, Container, ButtonGroup, Input, Checkbox, Link, Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, useMediaQuery, useDisclosure } from "@chakra-ui/react";
+import { DatePicker } from "antd";
 import { useEffect, useRef, useState } from "react";
 import { Form, Field, Formik } from "formik";
 import { Link as RouterLink } from "react-router-dom";
@@ -91,6 +91,7 @@ const StepOne = ({ values, onNext, ...rest }) => {
                         disabledDate={disabledDate}
                         showToday={false}
                         status={form.touched.date && form.errors.date ? 'error' : ''}
+                        style={{width: '100%'}}
                         defaultValue={dayjs(new Date(), 'YYYY-MM-DD')}
                         value={field.value ? dayjs(field.value, 'YYYY-MM-DD') : null}
                         onChange={(date, dateString) => form.setFieldValue('date', date ? date.format('YYYY-MM-DD') : null) }
@@ -346,7 +347,7 @@ const StepThree = ({ values, onPrevious, onNext, ...rest }) => {
                   </Field>
                 );
               })}
-              <ButtonGroup spacing='25px'>
+              <ButtonGroup spacing={{base: 0, md: '25px'}} flexDirection={{base: 'column-reverse', md: 'row'}} gap={{ base: '25px', md: '0'}}>
                 <Button type='button' bg='primary.green' w='320px' h='60px' onClick={() => onPrevious()}>
                   <SectionTitle>PREVIOUS</SectionTitle>
                 </Button>

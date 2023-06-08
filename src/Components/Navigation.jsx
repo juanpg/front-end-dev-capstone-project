@@ -1,6 +1,6 @@
 import { Box, Collapse, Flex, IconButton, Image, Link, Text, Popover, PopoverContent, PopoverTrigger, Stack, useDisclosure } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon, ChevronDownIcon } from "@chakra-ui/icons";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useLocation } from "react-router-dom";
 
 import Logo from '../Images/Logo.svg';
 import { CardTitle } from "./Typography";
@@ -46,40 +46,48 @@ export default function Navigation() {
 }
 
 const DesktopNav = () => {
+  const location = useLocation();
+
   return (
     <Stack direction='row' spacing='21px' alignItems='center' gap='21px'>
-      {NAV_ITEMS.map((navItem, idx) => (
-        <Box key={idx}>
-          <Popover trigger='hover' placement='bottom-start'>
-            <PopoverTrigger>
-              <Link as={RouterLink} to={navItem.href ?? '#'}>
-                <Flex alignItems='center' p={2}>
-                  <CardTitle>{navItem.label}</CardTitle>
-                </Flex>
-              </Link>
-            </PopoverTrigger>
-            {navItem.children && (
-              <PopoverContent border={0} boxShadow='xl' p={4} rounded='xl' minW='sm'>
-                <Stack>
-                  {navItem.children.map((child) => (
-                    <DesktopSubNav key={child.label} {...child} />
-                  ))}
-                </Stack>
-              </PopoverContent>
-            )}
-          </Popover>
-        </Box>
-      ))}
+      {NAV_ITEMS.map((navItem, idx) => {
+        const bgColor = navItem.href === location.pathname ? 'primary.yellow' : 'initial';
+
+        return (
+          <Box key={idx}>
+            <Popover trigger='hover' placement='bottom-start'>
+              <PopoverTrigger>
+                <Link as={RouterLink} to={navItem.href ?? '#'}>
+                  <Flex alignItems='center' p={2}  backgroundColor={bgColor}>
+                    <CardTitle>{navItem.label}</CardTitle>
+                  </Flex>
+                </Link>
+              </PopoverTrigger>
+              {navItem.children && (
+                <PopoverContent border={0} boxShadow='xl' p={4} rounded='xl' minW='sm'>
+                  <Stack>
+                    {navItem.children.map((child) => (
+                      <DesktopSubNav key={child.label} {...child} />
+                    ))}
+                  </Stack>
+                </PopoverContent>
+              )}
+            </Popover>
+          </Box>
+        );
+      })}
     </Stack>
   );
 }
 
 const DesktopSubNav = ({ label, href, subLabel, icon }) => {
+
   return (
     <Link
       as={RouterLink}
       to={href}
       role={'group'}
+      backgroundColor={ bgColor }
     >
       <Stack direction={'row'} align={'center'} mb={4} p={2} _groupHover={{ bg: 'orange.100'}}>
         <Box

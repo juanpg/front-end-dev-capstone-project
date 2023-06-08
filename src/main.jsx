@@ -8,7 +8,11 @@ import {
   RouterProvider
 } from 'react-router-dom';
 import Home from './Pages/Home.jsx'
+import About from './Pages/About.jsx'
+import Menu from './Pages/Menu.jsx'
 import Reservations from './Pages/Reservations.jsx'
+import Order from './Pages/Order.jsx';
+import Login from './Pages/Login.jsx'
 
 const router = createBrowserRouter([
   {
@@ -16,8 +20,24 @@ const router = createBrowserRouter([
     element: <Home />
   },
   {
+    path: '/about',
+    element: <About />
+  },
+  {
+    path: '/menu',
+    element: <Menu />
+  },
+  {
     path: '/reservations',
     element: <Reservations />
+  },
+  {
+    path: '/order',
+    element: <Order />
+  },
+  {
+    path: '/login',
+    element: <Login />
   }
 ]);
 

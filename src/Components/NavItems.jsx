@@ -5,11 +5,11 @@ const NAV_ITEMS = [
   },
   {
     label: 'About',
-    href: '/'
+    href: '/about'
   },
   {
     label: 'Menu',
-    href: '/'
+    href: '/menu'
   },
   {
     label: 'Reservations',
@@ -17,11 +17,11 @@ const NAV_ITEMS = [
   },
   {
     label: 'Order Online',
-    href: '/'
+    href: '/order'
   },
   {
     label: 'Login',
-    href: '/'
+    href: '/login'
   }
 ];
 

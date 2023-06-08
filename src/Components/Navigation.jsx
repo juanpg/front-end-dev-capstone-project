@@ -5,33 +5,7 @@ import { Link as RouterLink } from "react-router-dom";
 import Logo from '../Images/Logo.svg';
 import { CardTitle } from "./Typography";
 
-
-const NAV_ITEMS = [
-  {
-    label: 'Home',
-    href: '/'
-  },
-  {
-    label: 'About',
-    href: '/about'
-  },
-  {
-    label: 'Menu',
-    href: '/menu'
-  },
-  {
-    label: 'Reservations',
-    href: '/reservations'
-  },
-  {
-    label: 'Order Online',
-    href: '/order'
-  },
-  {
-    label: 'Login',
-    href: '/login'
-  }
-];
+import { NAV_ITEMS } from "./NavItems";
 
 export default function Navigation() {
   const { isOpen, onToggle } = useDisclosure();

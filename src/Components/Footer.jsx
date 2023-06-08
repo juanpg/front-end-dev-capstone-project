@@ -4,6 +4,8 @@ import { Link as RouterLink } from "react-router-dom";
 import LogoVertical from '../Images/LogoVertical.svg';
 import { SectionCategory, SectionTitle } from "./Typography";
 
+import { NAV_ITEMS } from "./NavItems";
+
 export default function Footer() {
   return (
     <Flex as='footer' align='center' bg='#495E57' justifyContent='center' py='40px'>
@@ -15,24 +17,11 @@ export default function Footer() {
         <Box>
           <SectionTitle display='block' mb='25px'>Navigation</SectionTitle>
           <List>
-            <ListItem mb='13px' fontSize='sectionCategory' fontWeight='sectionCategory'>
-              <Link as={RouterLink} to='/'>Home</Link>
-            </ListItem>
-            <ListItem mb='13px' fontSize='sectionCategory' fontWeight='sectionCategory'>
-              <Link as={RouterLink} to='/'>About</Link>
-            </ListItem>
-            <ListItem mb='13px' fontSize='sectionCategory' fontWeight='sectionCategory'>
-              <Link as={RouterLink} to='/'>Menu</Link>
-            </ListItem>
-            <ListItem mb='13px' fontSize='sectionCategory' fontWeight='sectionCategory'>
-              <Link as={RouterLink} to='/reservations'>Reservations</Link>
-            </ListItem>
-            <ListItem mb='13px' fontSize='sectionCategory' fontWeight='sectionCategory'>
-              <Link as={RouterLink} to='/'>Order Online</Link>
-            </ListItem>
-            <ListItem mb='13px' fontSize='sectionCategory' fontWeight='sectionCategory'>
-              <Link as={RouterLink} to='/'>Login</Link>
-            </ListItem>
+            {NAV_ITEMS.map(menu => (
+              <ListItem key={menu.label} mb='13px'>
+                <Link as={RouterLink} to={menu.href}><SectionCategory>{menu.label}</SectionCategory></Link>
+              </ListItem>
+            ))}
           </List>
         </Box>
         <Box>

@@ -3,6 +3,8 @@ import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from "react-router";
 import Home from "../Pages/Home";
 
+// https://www.eternaldev.com/blog/testing-a-react-application-with-vitest/
+
 describe("Home test", () => {
   test("Should show navigation", () => {
     render(<MemoryRouter><Home /></MemoryRouter>);

@@ -13,7 +13,7 @@ export default function Footer() {
         <Box alignItems='center' alignSelf='center'>
           <Image src={LogoVertical} maxH={{base: '80px', md: '130px'}} title='Little Lemon' alt='Little Lemon' />
         </Box>
-        <Box>
+        <Box as='nav' aria-label='Website navigation'>
           <SectionTitle display='block' mb='25px'>Navigation</SectionTitle>
           <List>
             {NAV_ITEMS.map(menu => (
@@ -23,7 +23,7 @@ export default function Footer() {
             ))}
           </List>
         </Box>
-        <Box>
+        <Box aria-label="Contact links">
           <SectionTitle display='block' mb='25px'>Contact</SectionTitle>
           <List>
             <SectionCategory display='block' mb='13px'>Address</SectionCategory>
@@ -31,7 +31,7 @@ export default function Footer() {
             <SectionCategory display='block' mb='13px'>Email</SectionCategory>
           </List>
         </Box>
-        <Box>
+        <Box as='nav' aria-label="Social Media links">
           <SectionTitle display='block' mb='25px'>Social Media</SectionTitle>
           <List>
             <SectionCategory display='block' mb='13px'>Facebook</SectionCategory>

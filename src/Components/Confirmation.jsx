@@ -82,10 +82,10 @@ export default function Confirmation({ values, onPrevious, onNext, ...rest }) {
                 );
               })}
               <ButtonGroup spacing={{base: 0, md: '25px'}} flexDirection={{base: 'column-reverse', md: 'row'}} gap={{ base: '25px', md: '0'}}>
-                <Button type='button' bg='primary.green' w='320px' h='60px' onClick={() => onPrevious()}>
+                <Button type='button' aria-label='Go to previous step' bg='primary.green' w='320px' h='60px' onClick={() => onPrevious()}>
                   <SectionTitle>PREVIOUS</SectionTitle>
                 </Button>
-                <Button type='submit' bg='primary.yellow' w='320px' h='60px' isLoading={props.isSubmitting} isDisabled={!props.isValid}>
+                <Button type='submit' bg='primary.yellow' aria-label="Confirm reservation" w='320px' h='60px' isLoading={props.isSubmitting} isDisabled={!props.isValid}>
                   <SectionTitle>FINISH</SectionTitle>                
                 </Button>
               </ButtonGroup>

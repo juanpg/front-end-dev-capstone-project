@@ -84,10 +84,10 @@ export default function CustomerDetails({ values, onPrevious, onNext, ...rest })
                 </Field>
               ))}
               <ButtonGroup spacing={{base: 0, md: '25px'}} flexDirection={{base: 'column-reverse', md: 'row'}} gap={{ base: '25px', md: '0'}}>
-                <Button type='button' bg='primary.green' w='320px' h='60px' onClick={() => onPrevious(props.values)}>
+                <Button type='button' aria-label='Go to previous step' bg='primary.green' w='320px' h='60px' onClick={() => onPrevious(props.values)}>
                   <SectionTitle>PREVIOUS</SectionTitle>
                 </Button>
-                <Button type='submit' bg='primary.yellow' w='320px' h='60px' isLoading={props.isSubmitting} isDisabled={!props.isValid}>
+                <Button type='submit' aria-label="Go to next step" bg='primary.yellow' w='320px' h='60px' isLoading={props.isSubmitting} isDisabled={!props.isValid}>
                   <SectionTitle>NEXT</SectionTitle>                
                 </Button>
               </ButtonGroup>

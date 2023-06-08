@@ -20,8 +20,6 @@ export default function EventDetails({ values, onNext, ...rest }) {
   
   const [availableTimes, dispatcher] = useReducer(updateTimes, null, initializeTimes);
 
-  console.log(availableTimes);
-
   useEffect(() => {
     inputRef.current.focus();
   }, [])
@@ -158,7 +156,7 @@ export default function EventDetails({ values, onNext, ...rest }) {
                   </FormControl>
                 )}
               </Field>
-              <Button type='submit' bg='primary.yellow' w='320px' h='60px' isLoading={props.isSubmitting} isDisabled={!props.isValid}>
+              <Button type='submit' aria-label="Go to next step" bg='primary.yellow' w='320px' h='60px' isLoading={props.isSubmitting} isDisabled={!props.isValid}>
                 <SectionTitle>NEXT</SectionTitle>                
               </Button>
             </Form>

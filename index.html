@@ -9,6 +9,36 @@
     <meta name="og:title" content="Little Lemon"/>
     <meta name="og:description" content="Family owned Mediterranean restaurant"/>
     <meta name="og:image" content="https://example.com/one-place-fishing-store.jpg"/>
+    <!-- <script src="https://raw.githubusercontent.com/Meta-Front-End-Developer-PC/capstone/master/api.js"></script> -->
+    <script>
+      const seededRandom = function (seed) {
+        var m = 2**35 - 31;
+        var a = 185852;
+        var s = seed % m;
+        return function () {
+          return (s = s * a % m) / m;
+        };
+      }
+
+      const fetchAPI = function(date) {
+        let result = [];
+        let random = seededRandom(date.getDate());
+
+        for(let i = 17; i <= 23; i++) {
+          if(random() < 0.5) {
+            result.push(i + ':00');
+          }
+          if(random() < 0.5) {
+            result.push(i + ':30');
+          }
+        }
+        return result;
+      };
+      const submitAPI = function(formData) {
+        // Return an error 20% of the time
+        return Math.random() < 0.8;
+      };
+    </script>
   </head>
   <body>
     <div id="root"></div>

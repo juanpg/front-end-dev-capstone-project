@@ -20,6 +20,7 @@ export default function CustomerDetails({ values, onPrevious, onNext, ...rest })
       <Box w='full' display='flex' justifyContent='center'>
         <Formik
           initialValues={values}
+          validateOnMount={true}
           onSubmit={(values, actions) => {
             onNext(values);
           }}

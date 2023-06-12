@@ -37,7 +37,7 @@ const StepThree = ({ values, onPrevious, onNext, ...rest }) => {
 
 export default function Reservations() {
   const [step, setStep] = useState(0);
-  const [eventDetails, setEventDetails] = useState({date: '', time: '', diners: 0, occasion: '', seatingOptions: '', comments: ''});
+  const [eventDetails, setEventDetails] = useState({date: '', time: '', diners: '', occasion: '', seatingOptions: '', comments: ''});
   const [customerDetails, setCustomerDetails] = useState({firstName: '', lastName: '', email: '', phone: ''});
 
   const handleNext = (information) => {

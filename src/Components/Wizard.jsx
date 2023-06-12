@@ -27,6 +27,7 @@ const icons = {
 
 const WizardStep = ({ step, stepIndex, activeStep, stepCount }) => {
   const [isLarge] = useMediaQuery('(min-width: 48em)');
+  const title =`Step ${stepIndex+1} - ${ stepIndex === activeStep ? 'Current' : stepIndex < activeStep ? "Complete" : "Pending" }`;
   
   return (
     <HStack flex={stepIndex < stepCount-1 ? 1 : 'initial'} display={isLarge || stepIndex === activeStep ? 'flex' : 'none'}>
@@ -37,6 +38,9 @@ const WizardStep = ({ step, stepIndex, activeStep, stepCount }) => {
             borderColor='black' 
             as={BsFillCheckCircleFill}
             color='primary.green' 
+            aria-label={title}
+            title={title}
+            role='status'
           /> 
         ) : (
           <Flex 
@@ -48,6 +52,9 @@ const WizardStep = ({ step, stepIndex, activeStep, stepCount }) => {
             bg={stepIndex === activeStep ? 'primary.yellow' : 'primary.green'} 
             justifyContent='center' 
             alignItems='center'
+            aria-label={title}
+            title={title}
+            role="status"
           >
             <SectionTitle>{stepIndex + 1}</SectionTitle>
           </Flex>

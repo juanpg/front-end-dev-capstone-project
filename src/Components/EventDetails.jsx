@@ -1,5 +1,5 @@
-import { useState, useRef, useEffect, useReducer } from "react";
-import { Box, Alert, AlertIcon, AlertTitle, AlertDescription, FormControl, FormLabel, FormErrorMessage, Select, RadioGroup, Stack, Radio, Textarea, Button, useMediaQuery } from "@chakra-ui/react";
+import { useState, useRef, useEffect, useReducer, useId } from "react";
+import { Box, Alert, AlertIcon, AlertTitle, AlertDescription, FormControl, FormLabel, FormErrorMessage, Select, Input, RadioGroup, Stack, Radio, Textarea, Button, useMediaQuery } from "@chakra-ui/react";
 import { CardTitle, SectionTitle } from "../Components/Typography";
 import { DatePicker } from "antd";
 import { Form, Field, Formik } from "formik";
@@ -30,6 +30,7 @@ export default function EventDetails({ values, onNext, ...rest }) {
       <Box w='full' display='flex' justifyContent='center'>
         <Formik
           initialValues={{...values}}
+          validateOnMount={true}
           onSubmit={(values, actions) => {
             onNext(values);
           }}
@@ -37,7 +38,7 @@ export default function EventDetails({ values, onNext, ...rest }) {
             Yup.object({
               date: Yup.string().required("Required"),
               time: Yup.string().required("Required"),
-              diners: Yup.number().required("Required").moreThan(0, 'Required').lessThan(9, 'Required'),
+              diners: Yup.number().required("Required").moreThan(0, 'Please enter a number between 1 and 10').lessThan(11, 'Please enter a number between 1 and 10'),
               occasion: Yup.string().required('Required'),
               seatingOptions: Yup.string().required("Required"),
             })
@@ -54,13 +55,14 @@ export default function EventDetails({ values, onNext, ...rest }) {
               )}
               <Field name='date' >
                 {({ field, form }) => {
+                  const id = useId();
                   return (
                     <FormControl isInvalid={form.touched.date && form.errors.date} mb='42px' display={{ base: 'block', md: 'grid' }} gridTemplateColumns='1fr 1fr'>
-                      <FormLabel>
+                      <FormLabel htmlFor={id}>
                         <CardTitle>Date</CardTitle>
                       </FormLabel>
                       <DatePicker 
-                        id='date'
+                        id={id}
                         ref={inputRef}
                         {...field}
                         format='MM/DD/YYYY'
@@ -83,78 +85,83 @@ export default function EventDetails({ values, onNext, ...rest }) {
                 }}
               </Field>
               <Field name='time' >
-                {({ field, form }) => (
-                  <FormControl isInvalid={form.touched.time && form.errors.time} mb='42px' display={{ base: 'block', md: 'grid' }} gridTemplateColumns='1fr 1fr'>
-                    <FormLabel htmlFor="time">
-                      <CardTitle>Time</CardTitle>
-                    </FormLabel>
-                    <Select placeholder="Select option" {...field}>
-                      {availableTimes.map(time => <option key={time} value={time}>{time}</option>)}
-                    </Select>
-                    <FormErrorMessage>{form.errors.time}</FormErrorMessage>
-                  </FormControl>
-                )}
+                {({ field, form }) => {
+                  const id = useId()
+                  return (
+                    <FormControl isInvalid={form.touched.time && form.errors.time} mb='42px' display={{ base: 'block', md: 'grid' }} gridTemplateColumns='1fr 1fr'>
+                      <FormLabel htmlFor={id}>
+                        <CardTitle>Time</CardTitle>
+                      </FormLabel>
+                      <Select id={id} placeholder="Select option" {...field}>
+                        {availableTimes.map(time => <option key={time} value={time}>{time}</option>)}
+                      </Select>
+                      <FormErrorMessage>{form.errors.time}</FormErrorMessage>
+                    </FormControl>
+                  );
+                }}
               </Field>
               <Field name='diners' >
-                {({ field, form }) => (
-                  <FormControl isInvalid={form.touched.diners && form.errors.diners} mb='42px' display={{ base: 'block', md: 'grid' }} gridTemplateColumns='1fr 1fr'>
-                    <FormLabel htmlFor="diners">
-                      <CardTitle>Number of diners</CardTitle>
-                    </FormLabel>
-                    <Select placeholder="Select option" {...field} >
-                      <option value='1'>1</option>
-                      <option value='2'>2</option>
-                      <option value='3'>3</option>
-                      <option value='4'>4</option>
-                      <option value='5'>5</option>
-                      <option value='6'>6</option>
-                      <option value='7'>7</option>
-                      <option value='8'>8</option>
-                    </Select>
-                    <FormErrorMessage>{form.errors.diners}</FormErrorMessage>
-                  </FormControl>
-                )}
+                {({ field, form }) => {
+                  const id = useId();
+                  return (
+                    <FormControl isInvalid={form.touched.diners && form.errors.diners} mb='42px' display={{ base: 'block', md: 'grid' }} gridTemplateColumns='1fr 1fr'>
+                      <FormLabel htmlFor={id}>
+                        <CardTitle>Number of diners</CardTitle>
+                      </FormLabel>
+                      <Input id={id} type='number' min='1' max='10' step='1' placeholder='Enter number of diners' {...field} />
+                      <FormErrorMessage>{form.errors.diners}</FormErrorMessage>
+                    </FormControl>
+                  );
+                }}
               </Field>
               <Field name='occasion'>
-                {({ field, form }) => (
-                  <FormControl isInvalid={form.touched.occasion && form.errors.occasion} mb='42px' display={{ base: 'block', md: 'grid' }} gridTemplateColumns='1fr 1fr'>
-                    <FormLabel htmlFor="occasion">
-                      <CardTitle>Occasion</CardTitle>
-                    </FormLabel>
-                    <Select placeholder="Select option" {...field}>
-                      <option value='birthday'>Birthday</option>
-                      <option value='engagement'>Engagement</option>
-                      <option value='anniversary'>Anniversary</option>
-                      <option value='other'>Other</option>
-                    </Select>
-                    <FormErrorMessage>{form.errors.occasion}</FormErrorMessage>
-                  </FormControl>
-                )}
+                {({ field, form }) => {
+                  const id = useId();
+                  return (
+                    <FormControl isInvalid={form.touched.occasion && form.errors.occasion} mb='42px' display={{ base: 'block', md: 'grid' }} gridTemplateColumns='1fr 1fr'>
+                      <FormLabel htmlFor={id}>
+                        <CardTitle>Occasion</CardTitle>
+                      </FormLabel>
+                      <Select id={id} placeholder="Select option" {...field}>
+                        <option value='birthday'>Birthday</option>
+                        <option value='engagement'>Engagement</option>
+                        <option value='anniversary'>Anniversary</option>
+                        <option value='other'>Other</option>
+                      </Select>
+                      <FormErrorMessage>{form.errors.occasion}</FormErrorMessage>
+                    </FormControl>
+                  );
+                }}
               </Field>
               <Field name='seatingOptions'>
-                {({ field, form }) => (
-                  <FormControl isInvalid={form.touched.seatingOptions && form.errors.seatingOptions} mb='42px' display={{ base: 'block', md: 'grid' }} gridTemplateColumns='1fr 1fr'>
-                    <FormLabel htmlFor="seatingOptions">
-                      <CardTitle>Seating options</CardTitle>
-                    </FormLabel>
-                    <RadioGroup name='seatingOptions' defaultValue="standard" {...field} onChange={(value) => form.setFieldValue('seatingOptions', value)} >
-                      <Stack direction='column'>
-                        <Radio value='standard' >Standard</Radio>
-                        <Radio value='outside'>Outside</Radio>
-                      </Stack>
-                    </RadioGroup>
-                    <FormErrorMessage>{form.errors.seatingOptions}</FormErrorMessage>
-                  </FormControl>
-                )}
+                {({ field, form }) => {
+                  return (
+                    <FormControl isInvalid={form.touched.seatingOptions && form.errors.seatingOptions} mb='42px' display={{ base: 'block', md: 'grid' }} gridTemplateColumns='1fr 1fr'>
+                      <FormLabel>
+                        <CardTitle>Seating options</CardTitle>
+                      </FormLabel>
+                      <RadioGroup name='seatingOptions' defaultValue="standard" {...field} onChange={(value) => form.setFieldValue('seatingOptions', value)} >
+                        <Stack direction='column'>
+                          <Radio value='standard' >Standard</Radio>
+                          <Radio value='outside'>Outside</Radio>
+                        </Stack>
+                      </RadioGroup>
+                      <FormErrorMessage>{form.errors.seatingOptions}</FormErrorMessage>
+                    </FormControl>
+                  );
+                }}
               </Field>
               <Field name='comments'>
-                {({ field, form }) => (
-                  <FormControl isInvalid={form.touched.comments && form.errors.comments} mb='42px' display={{ base: 'block', md: 'grid' }} gridTemplateColumns='1fr 1fr'>
-                    <FormLabel htmlFor="comments">Additional comments (Optional)</FormLabel>
-                    <Textarea {...field} placeholder="Enter any additional comments about your reservation" rows='5' resize='none' />
-                    <FormErrorMessage>{form.errors.comments}</FormErrorMessage>
-                  </FormControl>
-                )}
+                {({ field, form }) => {
+                  const id = useId();
+                  return (
+                    <FormControl isInvalid={form.touched.comments && form.errors.comments} mb='42px' display={{ base: 'block', md: 'grid' }} gridTemplateColumns='1fr 1fr'>
+                      <FormLabel htmlFor={id}>Additional comments (Optional)</FormLabel>
+                      <Textarea {...field} id={id} placeholder="Enter any additional comments about your reservation" rows='5' resize='none' />
+                      <FormErrorMessage>{form.errors.comments}</FormErrorMessage>
+                    </FormControl>
+                  )
+                }}
               </Field>
               <Button type='submit' aria-label="Go to next step" bg='primary.yellow' w='320px' h='60px' isLoading={props.isSubmitting} isDisabled={!props.isValid}>
                 <SectionTitle>NEXT</SectionTitle>                

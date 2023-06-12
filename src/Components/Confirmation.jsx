@@ -28,6 +28,7 @@ export default function Confirmation({ values, onPrevious, onNext, ...rest }) {
             sendSms: false, 
             sendEmail: false,
           }}
+          validateOnMount={true}
           onSubmit={(values, actions) => {
             actions.setSubmitting(true);
             const result = submitAPI(values);

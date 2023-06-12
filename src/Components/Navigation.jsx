@@ -57,7 +57,7 @@ const DesktopNav = () => {
           <Box key={idx}>
             <Popover trigger='hover' placement='bottom-start'>
               <PopoverTrigger>
-                <Link as={RouterLink} to={navItem.href ?? '#'}>
+                <Link as={RouterLink} to={navItem.href ?? '#'} aria-current={navItem.href === location.pathname}>
                   <Flex alignItems='center' p={2}  backgroundColor={bgColor}>
                     <CardTitle>{navItem.label}</CardTitle>
                   </Flex>
@@ -87,7 +87,6 @@ const DesktopSubNav = ({ label, href, subLabel, icon }) => {
       as={RouterLink}
       to={href}
       role={'group'}
-      backgroundColor={ bgColor }
     >
       <Stack direction={'row'} align={'center'} mb={4} p={2} _groupHover={{ bg: 'orange.100'}}>
         <Box

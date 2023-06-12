@@ -58,7 +58,7 @@ export default function Reservations() {
         maxW='4xl'
       >
         <DisplayTitle mb='0' color='primary.yellow'>Little Lemon</DisplayTitle>
-        <Subtitle mb='12px'>Chicago</Subtitle>
+        <Subtitle mb='36px'>Chicago</Subtitle>
         <Subtitle mb='48px'>Find a table for any occasion.</Subtitle>
         <Stack w='full' border='1px' position='relative' justify='center' align='center'>
           <Wizard steps={steps} activeStep={step} mb={3} w='95%' />
